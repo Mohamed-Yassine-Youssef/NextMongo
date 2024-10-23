@@ -1,0 +1,29 @@
+POST http://localhost:3000/api/users
+Content-Type: application/json
+
+{
+     "firstname": "hamza",
+    "lastname": "shaieb",
+    "email": "hamza@gmail.com",
+    "password": "123"
+}
+ 
+####
+GET http://localhost:3000/api/users 
+
+###
+DELETE http://localhost:3000/api/users/6717ffb0a7075cf6954e8169
+
+###
+GET http://localhost:3000/api/users/6718aac03ff84dee234917e5
+
+###
+PUT http://localhost:3000/api/users/6718aac03ff84dee234917e5
+Content-Type: application/json
+
+{
+     "firstname": "hamza2",
+    "lastname": "shaieb",
+    "email": "hamza@gmail.com",
+    "password": "123"
+}

@@ -8,6 +8,16 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      container: {
+        center: true,
+        padding: "2rem",
+        screens: {
+          sm: "100%", // Full width for small screens
+          md: "768px",
+          lg: "1024px",
+          xl: "1280px",
+        },
+      },
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
