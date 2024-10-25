@@ -7,3 +7,6 @@ export default function Home() {
     </div>
   );
 }
+//add register login with jwt and refresh token
+//implement redux
+//implement intercepting routes

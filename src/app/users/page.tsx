@@ -42,9 +42,7 @@ export default async function HomePage() {
             <th scope="col" className="px-6 py-3">
               Email
             </th>
-            <th scope="col" className="px-6 py-3">
-              Password
-            </th>
+
             <th scope="col" className="px-6 py-3">
               Edit
             </th>
@@ -62,7 +60,7 @@ export default async function HomePage() {
               <td className="px-6 py-3">{user.firstname}</td>
               <td className="px-6 py-3">{user.lastname}</td>
               <td className="px-6 py-3">{user.email}</td>
-              <td className="px-6 py-3">{user.password}</td>
+
               <td className="px-6 py-3 text-2xl cursor-pointer">
                 <Link href={`/users/${user._id}`}>✎</Link>
               </td>
