@@ -1,7 +1,8 @@
 "use client";
 import { useState } from "react";
-import axiosInstance from "@/lib/axiosInstance";
+
 import { useRouter } from "next/navigation";
+import axios from "axios";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -10,15 +11,11 @@ const Login = () => {
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
-    const response = await axiosInstance.post(
-      "http://localhost:3000/api/login",
-      {
-        email,
-        password,
-      }
-    );
-    localStorage.setItem("token", response.data.token);
-    localStorage.setItem("refreshToken", response.data.refreshToken);
+    await axios.post("http://localhost:3000/api/login", {
+      email,
+      password,
+    });
+
     router.push("/users"); // Redirect to home or dashboard
   };
 

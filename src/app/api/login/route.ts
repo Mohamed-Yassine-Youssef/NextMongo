@@ -22,11 +22,18 @@ export async function POST(req: NextRequest) {
     }
 
     const token = jwt.sign({ email }, JWT_SECRET, { expiresIn: "1m" });
-    const refreshToken = jwt.sign({ email }, REFRESH_SECRET, {
-      expiresIn: "7d",
+    // Set the token as a cookie
+    const response = NextResponse.json(
+      { message: "Login successful" },
+      { status: 200 }
+    );
+    response.cookies.set("token", token, {
+      httpOnly: true,
+      path: "/",
+      maxAge: 60,
     });
 
-    return NextResponse.json({ token, refreshToken }, { status: 200 });
+    return response;
   } catch (error: any) {
     return NextResponse.json({ message: error.message }, { status: 400 });
   }

@@ -1,12 +1,17 @@
-import jwt from "jsonwebtoken";
+import { jwtVerify } from "jose";
 
-const JWT_SECRET = process.env.JWT_SECRET || "your_jwt_secret";
+const JWT_SECRET = new TextEncoder().encode(
+  process.env.JWT_SECRET || "your_jwt_secret"
+);
 
-export const authenticate = (token: string) => {
-  return new Promise((resolve, reject) => {
-    jwt.verify(token, JWT_SECRET, (err, user) => {
-      if (err) return reject(err);
-      resolve(user);
-    });
-  });
+export const authenticate = async (token: string) => {
+  if (!token) return null;
+
+  try {
+    const { payload } = await jwtVerify(token, JWT_SECRET);
+    return payload; // Return the decoded payload
+  } catch (error: any) {
+    console.log("Token verification failed:", error.message);
+    return null;
+  }
 };

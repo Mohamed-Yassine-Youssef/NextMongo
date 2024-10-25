@@ -1,7 +1,8 @@
 "use client";
 import { useState } from "react";
-import axiosInstance from "@/lib/axiosInstance";
+
 import { useRouter } from "next/navigation";
+import axios from "axios";
 
 const Register = () => {
   const [firstname, setFirstName] = useState("");
@@ -11,7 +12,7 @@ const Register = () => {
   const router = useRouter();
   const handleRegister = async (e: React.FormEvent) => {
     e.preventDefault();
-    await axiosInstance.post("http://localhost:3000/api/register", {
+    await axios.post("http://localhost:3000/api/register", {
       firstname,
       lastname,
       email,
